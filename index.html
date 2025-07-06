@@ -143,10 +143,7 @@
 
       emoji.style.left = ${Math.random() * 100}vw;
       emoji.style.fontSize = ${size}px;
-      emoji.style.animationDuration = ${duration}s;
-      emoji.style.animationName = 'fall'; // ✅ This is the actual fix
-      emoji.style.animationTimingFunction = 'linear';
-      emoji.style.animationFillMode = 'forwards';
+      emoji.style.animation = fall ${duration}s linear forwards;
 
       document.body.appendChild(emoji);
 
@@ -159,14 +156,16 @@
   </script>
 
   <script>
-    const correctPassword = "sample";
+    const correctPassword = "sample"; // Change this to your real password
 
     function checkPassword() {
       const input = document.getElementById("password").value;
       const errorBox = document.getElementById("error");
 
       if (input === correctPassword) {
-        window.location.href = "welcome.html";
+        // You can change this to a real redirect or reveal content
+        alert("Correct Password! 🎉 Welcome Muraat!");
+        // Example: window.location.href = "welcome.html";
       } else {
         errorBox.style.display = "block";
         errorBox.textContent = "Wrong Password 💔";
