@@ -96,20 +96,22 @@
       display: none;
     }
 
-    /* ✅ Fixed Falling emojis visibility */
+    /* Stronger visibility fix for emojis */
     .emoji {
-      position: absolute;
-      animation: fall linear infinite;
-      opacity: 1;
-      z-index: 999;
+      position: fixed;
+      top: -50px;
+      font-size: 36px;
       pointer-events: none;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-      user-select: none;
+      opacity: 1;
+      animation: fall linear;
+      animation-fill-mode: forwards;
+      z-index: 9999;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
     }
 
     @keyframes fall {
       0% {
-        transform: translateY(-10vh) rotate(0deg);
+        transform: translateY(0px) rotate(0deg);
         opacity: 1;
       }
       100% {
@@ -132,7 +134,6 @@
     <div id="error">Wrong Password 💔</div>
   </div>
 
-  <!-- Falling emojis -->
   <script>
     const emojis = ["🎉", "💖", "🎈"];
 
@@ -141,23 +142,21 @@
       emoji.classList.add("emoji");
       emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
 
-      const size = Math.floor(Math.random() * 20) + 28; // 28–48px
-      emoji.style.fontSize = ${size}px;
+      const size = Math.floor(Math.random() * 20) + 28;
+      const duration = Math.random() * 3 + 4;
+
       emoji.style.left = ${Math.random() * 100}vw;
-      emoji.style.top = -50px;
-      emoji.style.animationDuration = ${Math.random() * 3 + 4}s; // 4–7s
+      emoji.style.fontSize = ${size}px;
+      emoji.style.animationDuration = ${duration}s;
 
       document.body.appendChild(emoji);
 
-      setTimeout(() => {
-        emoji.remove();
-      }, 8000);
+      setTimeout(() => emoji.remove(), duration * 1000);
     }
 
     setInterval(createEmoji, 400);
   </script>
 
-  <!-- Password logic -->
   <script>
     const correctPassword = "sample";
 
