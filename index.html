@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Special Surprise</title>
   <style>
-    /* Reset and base styles */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -20,11 +19,10 @@
       position: relative;
     }
 
-    /* Top heading line */
     .top-heading {
       text-align: center;
       color: #4A4A4A;
-      font-size: 28px; /* Increased size */
+      font-size: 28px;
       font-weight: 600;
       margin-top: 40px;
       padding: 0 16px;
@@ -36,7 +34,6 @@
       color: #FF6F61;
     }
 
-    /* Center box */
     .password-box {
       background: #ffffff;
       border-radius: 16px;
@@ -99,19 +96,21 @@
       display: none;
     }
 
-    /* Falling emojis */
+    /* ✅ Fixed Falling emojis visibility */
     .emoji {
       position: absolute;
       animation: fall linear infinite;
-      opacity: 0.9;
-      z-index: 1;
+      opacity: 1;
+      z-index: 999;
       pointer-events: none;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+      user-select: none;
     }
 
     @keyframes fall {
       0% {
         transform: translateY(-10vh) rotate(0deg);
-        opacity: 0.9;
+        opacity: 1;
       }
       100% {
         transform: translateY(110vh) rotate(360deg);
