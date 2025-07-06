@@ -96,16 +96,16 @@
       display: none;
     }
 
-    /* Stronger visibility fix for emojis */
     .emoji {
       position: fixed;
       top: -50px;
       font-size: 36px;
       pointer-events: none;
       opacity: 1;
-      animation: fall linear;
-      animation-fill-mode: forwards;
       z-index: 9999;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
     }
 
@@ -154,7 +154,9 @@
       setTimeout(() => emoji.remove(), duration * 1000);
     }
 
-    setInterval(createEmoji, 400);
+    window.addEventListener("load", () => {
+      setInterval(createEmoji, 400);
+    });
   </script>
 
   <script>
