@@ -24,10 +24,12 @@
     .top-heading {
       text-align: center;
       color: #4A4A4A;
-      font-size: 22px;
+      font-size: 28px; /* Increased size */
       font-weight: 600;
       margin-top: 40px;
       padding: 0 16px;
+      z-index: 2;
+      position: relative;
     }
 
     .top-heading span {
@@ -42,10 +44,12 @@
       padding: 32px;
       width: 90%;
       max-width: 400px;
-      margin: 100px auto 0;
       text-align: center;
-      position: relative;
-      z-index: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
     }
 
     .password-box h2 {
@@ -100,15 +104,18 @@
       position: absolute;
       animation: fall linear infinite;
       opacity: 0.9;
-      z-index: 0;
+      z-index: 1;
+      pointer-events: none;
     }
 
     @keyframes fall {
       0% {
         transform: translateY(-10vh) rotate(0deg);
+        opacity: 0.9;
       }
       100% {
         transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
       }
     }
   </style>
