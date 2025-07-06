@@ -99,13 +99,9 @@
     .emoji {
       position: fixed;
       top: -50px;
-      font-size: 36px;
       pointer-events: none;
       opacity: 1;
       z-index: 9999;
-      animation-name: fall;
-      animation-timing-function: linear;
-      animation-fill-mode: forwards;
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
     }
 
@@ -140,7 +136,7 @@
     function createEmoji() {
       const emoji = document.createElement("div");
       emoji.classList.add("emoji");
-      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
 
       const size = Math.floor(Math.random() * 20) + 28;
       const duration = Math.random() * 3 + 4;
@@ -148,13 +144,16 @@
       emoji.style.left = ${Math.random() * 100}vw;
       emoji.style.fontSize = ${size}px;
       emoji.style.animationDuration = ${duration}s;
+      emoji.style.animationName = 'fall'; // ✅ This is the actual fix
+      emoji.style.animationTimingFunction = 'linear';
+      emoji.style.animationFillMode = 'forwards';
 
       document.body.appendChild(emoji);
 
       setTimeout(() => emoji.remove(), duration * 1000);
     }
 
-    window.addEventListener("load", () => {
+    window.addEventListener("DOMContentLoaded", () => {
       setInterval(createEmoji, 400);
     });
   </script>
