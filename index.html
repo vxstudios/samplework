@@ -1,11 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>VX Studios</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Special Surprise</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Top heading line */
+    .top-heading {
+      text-align: center;
+      color: #4A4A4A;
+      font-size: 22px;
+      font-weight: 600;
+      margin-top: 40px;
+      padding: 0 16px;
+    }
+
+    .top-heading span {
+      color: #FF6F61;
+    }
+
+    /* Center box */
+    .password-box {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      padding: 32px;
+      width: 90%;
+      max-width: 400px;
+      margin: 100px auto 0;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .password-box h2 {
+      font-size: 20px;
+      color: #333333;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .password-box input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: #f5f5f5;
+      color: #333;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .password-box input::placeholder {
+      color: #888;
+    }
+
+    .password-box button {
+      background-color: #FF6F61;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .password-box button:hover {
+      background-color: #e65c50;
+    }
+
+    #error {
+      color: #FF4C4C;
+      font-weight: 500;
+      margin-top: 10px;
+      display: none;
+    }
+
+    /* Falling emojis */
+    .emoji {
+      position: absolute;
+      animation: fall linear infinite;
+      opacity: 0.9;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello from VX Studios 🎉</h1>
-  <p>This is a test GitHub Pages site.</p>
+
+  <div class="top-heading">
+    This website is lovingly created for <span>Muraat</span> — to celebrate a special day filled with memories, love, and joy.
+  </div>
+
+  <div class="password-box">
+    <h2>Enter Password 🔒</h2>
+    <input type="password" id="password" placeholder="Enter your password" />
+    <button onclick="checkPassword()">Enter</button>
+    <div id="error">Wrong Password 💔</div>
+  </div>
+
+  <!-- Falling emojis -->
+  <script>
+    const emojis = ["🎉", "💖", "🎈"];
+
+    function createEmoji() {
+      const emoji = document.createElement("div");
+      emoji.classList.add("emoji");
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+      const size = Math.floor(Math.random() * 20) + 28; // 28–48px
+      emoji.style.fontSize = ${size}px;
+      emoji.style.left = ${Math.random() * 100}vw;
+      emoji.style.top = -50px;
+      emoji.style.animationDuration = ${Math.random() * 3 + 4}s; // 4–7s
+
+      document.body.appendChild(emoji);
+
+      setTimeout(() => {
+        emoji.remove();
+      }, 8000);
+    }
+
+    setInterval(createEmoji, 400);
+  </script>
+
+  <!-- Password logic -->
+  <script>
+    const correctPassword = "sample";
+
+    function checkPassword() {
+      const input = document.getElementById("password").value;
+      const errorBox = document.getElementById("error");
+
+      if (input === correctPassword) {
+        window.location.href = "welcome.html";
+      } else {
+        errorBox.style.display = "block";
+        errorBox.textContent = "Wrong Password 💔";
+      }
+    }
+  </script>
+
 </body>
 </html>
